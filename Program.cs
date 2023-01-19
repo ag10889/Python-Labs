@@ -119,18 +119,40 @@ public class Class1
     public char[,] make_mirror(char[,] A)
     {
         char[,] B = new char[A.GetLength(0), A.GetLength(1)];
+        // This for loop sets values from 12->0
         for (int row = B.GetLength(0)-1; row >= 0; row-- )
         {
             for (int column = B.GetLength(1)-1; column >= 0; column--)
             {
-                
+                // I need to copy the backend of the original array to the beginning of the copy array.
+                B.SetValue(A.GetValue[row],[column]);
+            }
+        }
+        char[,] C = new char[B.GetLength(0), B.GetLength(1)];
+        // This for loop sets values of 12->0 to now 0->12, so [0,0]==[0,12] (in theory) 
+        for (int row = 0; row < B.GetLength(0); row++)
+        {
+            for (int column = 0; column < B.GetLength(1); column++)
+            {
+                if (C[row][column]=="(")
+                {
+                    C[row][column] = ")";
+                } else if (C[row][column]==")")
+                {
+                    C[row][column] == "(";
+                } else if (C[row][column]=="/")
+                {
+                    C[row][column] == "\\";
+                } else if  (C[row][column]=="\\")
+                {
+                    C[row][column] == "/";
+                } else
+                {
+                    C.SetValue(B.GetValue[row][column]);
+                }
             }
         }
     }
-
-
-
-
     public static void Main(string[] args)
 
     {
@@ -158,9 +180,5 @@ public class Class1
         }
 
     }
-
-
-
-
 
 }
