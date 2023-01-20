@@ -116,42 +116,53 @@ public class Class1
         return pixel;
 
     }
-    public char[,] make_mirror(char[,] A)
+    public static char[,] make_mirror(char[,] A)
     {
-        char[,] B = new char[A.GetLength(0), A.GetLength(1)];
-        // This for loop sets values from 12->0
-        for (int row = B.GetLength(0)-1; row >= 0; row-- )
+        char[,] B = new char[4, 13];
+        for (int i = 0; i < 4; i++)
         {
-            for (int column = B.GetLength(1)-1; column >= 0; column--)
+            for (int j = 0; j < 13; j++)
             {
-                // I need to copy the backend of the original array to the beginning of the copy array.
-                B.SetValue(A.GetValue[row],[column]);
+                B[i, j] = A[i, j];
             }
         }
-        char[,] C = new char[B.GetLength(0), B.GetLength(1)];
-        // This for loop sets values of 12->0 to now 0->12, so [0,0]==[0,12] (in theory) 
-        for (int row = 0; row < B.GetLength(0); row++)
+        for (int row = 0; row < 4; row++)
         {
-            for (int column = 0; column < B.GetLength(1); column++)
+            for (int column = 0; column <=6; column++)
             {
-                if (C[row][column]=="(")
-                {
-                    C[row][column] = ")";
-                } else if (C[row][column]==")")
-                {
-                    C[row][column] == "(";
-                } else if (C[row][column]=="/")
-                {
-                    C[row][column] == "\\";
-                } else if  (C[row][column]=="\\")
-                {
-                    C[row][column] == "/";
-                } else
-                {
-                    C.SetValue(B.GetValue[row][column]);
+                int column_mirror =(B.GetLength(1)-1)-column;
+                char a = B[row, column];
+                char b = B[row, column_mirror];
+                B[row, column] = b;
+                B[row, column_mirror] = a;
+            }
+        }
+        for (int i = 0; i < 4; i++)
+        {
+            for (int j = 0; j < 13; j++)
+            {
+                if (B[i,j].Equals(')'))
+                { 
+                    B[i, j] = '(';
+                    continue;
                 }
+                if (B[i,j].Equals('('))
+                {
+                    B[i, j] = ')';
+                    continue;
+                }
+                if (B[i,j].Equals('/'))
+                {
+                    B[i, j] = '\\';
+                    continue;
+                }
+                if (B[i,j].Equals('\\'))
+                {
+                    B[i, j] = '/';
+                } 
             }
         }
+        return B;
     }
     public static void Main(string[] args)
 
@@ -160,6 +171,7 @@ public class Class1
         char[,] carArray = new char[4, 13];
 
         carArray = make_forward();
+        char[,] mirrorArray = new char[4, 13];
 
         for (int row = 0; row < carArray.GetLength(0); row++)
 
@@ -172,13 +184,40 @@ public class Class1
                 {
                     Console.WriteLine("");
                     Console.Write(carArray[row, column]);
-                } else {
+                }
+                else
+                {
                     Console.Write(carArray[row, column]);
 
                 }
             }
         }
+        mirrorArray = make_mirror(carArray);
+        Console.WriteLine("");
+        for (int i = 0; i < 4;i++)
 
+        {
+            Console.WriteLine("");
+            for (int j = 0; j < 13; j++)
+            {
+                Console.Write(mirrorArray[i, j]);
+            }
+        }
+        for (int i = 0; i < 4; i++)
+        {
+            Console.WriteLine("");
+            for (int j = 0; j < 26; j++)
+       
+            {
+                if (j < 13)
+                {
+                    Console.Write(carArray[i, j]);
+
+                } else
+                {
+                    Console.Write(mirrorArray[i, j%13]);
+                }
+            }
+        }
     }
-
 }
