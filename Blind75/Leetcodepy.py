@@ -41,11 +41,11 @@ class Solution:
             start = i #/ Sets start at first index
 
 
-            while stack and stack[-1][-1] > h: 
-                index, height = stack.pop()
-                maxArea = max(maxArea, height * (i - index))
-                start = index
-            stack.append((start, h))
-        for i, h in stack:
-            maxArea = max(maxArea, h * (len(heights) - i))
+            while stack and stack[-1][-1] > h: #/ While stack is not empty, and index and height are greater that current height
+                index, height = stack.pop() #Saves the index, and heigh values before its popped
+                maxArea = max(maxArea, height * (i - index)) #Calculates the maxArea by said height, and by taking the current index, and subtracinttg it from the popped index. 
+                start = index #/ new start 
+            stack.append((start, h)) #/ Append said new start, and new height to be compared. 
+        for i, h in stack: #/ check left over values inside the array 
+            maxArea = max(maxArea, h * (len(heights) - i)) #/ checsk said left over values by computing the maxarea using the new h and the original length subtraced by the new i len. 
         return maxArea
