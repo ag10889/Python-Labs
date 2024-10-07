@@ -52,8 +52,8 @@ class Solution:
     def isPalindrome(self, s: str) -> bool:
         #Is case insensitive
         
-        reverseStr = "" # create a empty string to hold the reverse
-        for i in s: #Not sure if this is correct, but my idea is to iterate in reverse order through the original string 
-            if i.isalpha() or i.isdigit(): #Asking if the element is a digit or alphabetical
-                 reverseStr += i.tolower() #Appending the string to the new string, in lower format
+        reverseStr = '' 
+        for i in s:
+            if i.isalpha() or i.isdigit(): 
+                reverseStr += i.lower() 
         return (reverseStr == reverseStr[::-1]) #returning the new string, and the reversed i string
