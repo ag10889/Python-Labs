@@ -49,3 +49,11 @@ class Solution:
         for i, h in stack: #/ check left over values inside the array 
             maxArea = max(maxArea, h * (len(heights) - i)) #/ checsk said left over values by computing the maxarea using the new h and the original length subtraced by the new i len. 
         return maxArea
+    def isPalindrome(self, s: str) -> bool:
+        #Is case insensitive
+        
+        reverseStr = "" # create a empty string to hold the reverse
+        for i in s: #Not sure if this is correct, but my idea is to iterate in reverse order through the original string 
+            if i.isalpha() or i.isdigit(): #Asking if the element is a digit or alphabetical
+                 reverseStr += i.tolower() #Appending the string to the new string, in lower format
+        return (reverseStr == reverseStr[::-1]) #returning the new string, and the reversed i string
