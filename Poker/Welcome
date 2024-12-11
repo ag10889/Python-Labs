@@ -1,0 +1,18 @@
+Software Requiremnts Documentation Specification 
+
+The purpose of this document is to enunmerTe the requirements of the term project. The project is to be read by engineers, designers, and other members of this organization. 
+
+Patrick Tanke and Alex George 
+
+1.2 Scope 
+The project is recreating a poker game using Python, UI will be handled at a later date. This project will have handle all aspects of the game “poker”. The project will be able to replicate a game a poker, with hands, values, suits, hand rankings, players, house, turns, card sorting. 
+
+1.3 definitions and abbreviations 
+Hand - A players collection of cards 
+Cards - Suit, value
+
+2. Specific requirements 
+2.1 External interfaces - visual poker game 
+2.2 functional requirements 
+2.2.1 hand creation, hand placement, sorting methods related to poker 
+2.2.2 card sorting 
