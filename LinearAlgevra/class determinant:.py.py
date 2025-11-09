@@ -1,8 +1,6 @@
 #*
 #made by Alexander George
-#6/12/2024 (10/15/25)
-#scary how you knows my name (sorry broski)
-#can you make it so this is multiline comment? 
+
 
 class determinant:
     # TODO
